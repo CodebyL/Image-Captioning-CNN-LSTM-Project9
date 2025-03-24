@@ -1,8 +1,8 @@
 🎯 Captioning System Rules<br />
 
 * The system looks at an image and generates a caption describing it.<br />
-* It uses a CNN (InceptionV3) to understand the image content.<br />
-* It uses an LSTM model to generate a short sentence based on the image.<br />
+* It uses a CNN (Convolutional Neural Network) (InceptionV3) to understand the image content.<br />
+* It uses an LSTM (Long Short-Term Memory) model to generate a short sentence based on the image.<br />
 * This version uses a simplified mock caption to demonstrate how the system works.<br />
 ___________________________________________________________________________________________________
 
