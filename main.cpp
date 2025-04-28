@@ -1,27 +1,31 @@
 #include <iostream>
-#include <string>
-
-// This function returns a caption based on the image file name
-std::string generateCaption(std::string imageName) {
-    if (imageName == "dog.jpg") {
-        return "A dog is sitting on the grass.";
-    } else if (imageName == "beach.jpg") {
-        return "A beautiful view of the beach.";
-    } else {
-        return "An image of something interesting.";
-    }
-}
+#include <fstream>
+#include <map>
+#include <vector>
 
 int main() {
+    std::map<std::string, std::string> captions = {
+        {"dog.jpg", "A dog is sitting on the grass."},
+        {"beach.jpg", "A beautiful view of the beach."},
+        {"car.jpg", "A red car parked on the street."},
+        {"mountain.jpg", "Snow-covered mountains under a clear sky."},
+        {"city.jpg", "A busy city skyline at night."}
+    };
+
+    std::ifstream inputFile("images.txt");
+    std::ofstream outputFile("captions.txt");
+
     std::string imageName;
 
-    // Asks the user to input the image file name
-    std::cout << "Enter image file name: ";
-    std::cin >> imageName;
+    while (inputFile >> imageName) {
+        if (captions.find(imageName) != captions.end()) {
+            outputFile << imageName << ": " << captions[imageName] << std::endl;
+        } else {
+            outputFile << imageName << ": An image of something interesting." << std::endl;
+        }
+    }
 
-    // Get and print the generated caption
-    std::string caption = generateCaption(imageName);
-    std::cout << "Generated Caption: " << caption << std::endl;
+    std::cout << "Captions generated in captions.txt" << std::endl;
 
     return 0;
 }
